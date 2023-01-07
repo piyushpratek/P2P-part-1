@@ -1,14 +1,15 @@
 import { useState } from 'react';
-import { BrowserRouter as Router } from 'react-router-dom';
-
+import { Routes, Route } from 'react-router-dom';
 import './App.css';
 import Coffees from './components/Coffees';
+import GridExample from './examples/GridExample';
 
 function App() {
   return (
-    <Router>
-      <Coffees />
-    </Router>
+    <Routes>
+      <Route index element={<Coffees />} />
+      <Route path='/grid' element={<GridExample />} />
+    </Routes>
   );
 }
 

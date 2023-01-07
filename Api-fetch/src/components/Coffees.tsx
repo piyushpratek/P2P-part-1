@@ -15,8 +15,8 @@ const Coffees = () => {
   }, []);
   //16px=1rem
   return (
-    <div className='  p-5 border border-dark m-2'>
-      <h1>Coffees Component</h1>
+    <div className='  p-5 border border-dark m-2 '>
+      <h1 className='text-primary'>Coffees Component</h1>
       {coffeeData.map((coffee: any) => (
         <Coffee coffee={coffee} />
       ))}
