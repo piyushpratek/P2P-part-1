@@ -13,15 +13,14 @@ const Coffees = () => {
     }
     main();
   }, []);
-
+  //16px=1rem
   return (
-    <>
-      <div>
-        {coffeeData.map((coffee: any) => (
-          <Coffee coffee={coffee} />
-        ))}
-      </div>
-    </>
+    <div className='  p-5 border border-dark m-2'>
+      <h1>Coffees Component</h1>
+      {coffeeData.map((coffee: any) => (
+        <Coffee coffee={coffee} />
+      ))}
+    </div>
   );
 };
 
