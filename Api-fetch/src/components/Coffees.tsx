@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getCoffeesData } from '../data/requests';
+import { getCoffeesData } from '../requests/coffeeRequests';
 import Coffee from './Coffee';
 
 const Coffees = () => {
@@ -15,11 +15,12 @@ const Coffees = () => {
   }, []);
   //16px=1rem
   return (
-    <div className='  p-5 border border-dark m-2 '>
-      <h1 className='text-primary'>Coffees Component</h1>
-      {coffeeData.map((coffee: any) => (
-        <Coffee coffee={coffee} />
-      ))}
+    <div className='p-5  border-dark m-2 '>
+      {coffeeData
+        .filter((c: any) => c.id !== 23)
+        .map((coffee: any) => (
+          <Coffee coffee={coffee} />
+        ))}
     </div>
   );
 };

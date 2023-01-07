@@ -1,33 +1,50 @@
 import React from 'react';
-import { coffeeType } from '../CoffeeType/CoffeeTypes';
+import { coffeeType } from '../types/CoffeeTypes';
 
 type CoffeePropsType = { coffee: coffeeType };
 
 const Coffee = (props: CoffeePropsType) => {
-  const { coffee } = props;
+  // const coffee = props.coffee; // Older syntax
+  const { coffee } = props; // Newer sytax: *Destructuring* (ES15 => Year: 2015)
+  // console.log('typeof ingredients?', typeof coffee.ingredients);
   return (
-    <div className='border border-primary my-5 p-4 rounded-start-5'>
-      <h2>{coffee.title}</h2>
-      <div className='row'>
-        <div className='col-md-5'>
-          <img
-            src={coffee.image}
-            style={{
-              width: '100%',
-              aspectRatio: 1.8, // width:height
-            }}
-            className='rounded-5 rounded-end-0 object-fit-cover'
-          />
-        </div>
-        <div className='col-md-7'>
-          <div>
-            Description: <br />
-            {coffee.description}
+    <>
+      <div className='border border-primary my-5 p-4 rounded-start-5'>
+        <div className='row'>
+          <div className='col-md-5 '>
+            <img
+              src={coffee.image}
+              style={{
+                width: '100%',
+                aspectRatio: 1.8, // width:height
+              }}
+              className='rounded-5 rounded-end-0 object-fit-cover'
+            />
           </div>
-          <div className='fst-italic'>Ingredients: {coffee.ingredients}</div>
+          <div className='col-md-7 border border-2'>
+            <div>
+              <h1 className='text-warning-emphasis'>
+                Type:-{'   '} {coffee.title}
+              </h1>
+            </div>
+            <div>
+              <h3 className='text-warning-emphasis'>Description:</h3>
+
+              <br />
+              <h5>{coffee.description}</h5>
+            </div>
+            <div className='fst-italic'>
+              <h3 className='text-warning-emphasis'>Ingredients:</h3>{' '}
+              {coffee?.ingredients?.map((ingredient: any) => (
+                <li>
+                  <h5>{ingredient}</h5>
+                </li>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
