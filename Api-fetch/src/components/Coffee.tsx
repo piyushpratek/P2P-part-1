@@ -9,7 +9,10 @@ const Coffee = (props: CoffeePropsType) => {
   // console.log('typeof ingredients?', typeof coffee.ingredients);
   return (
     <>
-      <div className='border border-primary my-5 p-4 rounded-start-5'>
+      <div
+        className='border border-primary my-5 p-4 rounded-start-5'
+        key={coffee.id}
+      >
         <div className='row'>
           <div className='col-md-5 '>
             <img
@@ -21,20 +24,22 @@ const Coffee = (props: CoffeePropsType) => {
               className='rounded-5 rounded-end-0 object-fit-cover'
             />
           </div>
-          <div className='col-md-7 border border-2'>
+          <div className='col-md-7 border border-2  rounded-start-5'>
             <div>
-              <h1 className='text-warning-emphasis'>
-                Type:-{'   '} {coffee.title}
+              <h1 className='text-warning-emphasis fw-bold '>
+                Item:-{'   '} {coffee.title}
               </h1>
             </div>
             <div>
-              <h3 className='text-warning-emphasis'>Description:</h3>
+              <h3 className='text-warning-emphasis '>Description:</h3>
 
               <br />
               <h5>{coffee.description}</h5>
             </div>
             <div className='fst-italic'>
-              <h3 className='text-warning-emphasis'>Ingredients:</h3>{' '}
+              <h3 className='text-warning-emphasis' key={coffee.id}>
+                Ingredients:
+              </h3>{' '}
               {coffee?.ingredients?.map((ingredient: any) => (
                 <li>
                   <h5>{ingredient}</h5>

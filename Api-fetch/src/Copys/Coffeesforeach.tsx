@@ -1,15 +1,24 @@
 import React, { useEffect, useState } from 'react';
 import { getCoffeesData } from '../requests/coffeeRequests';
-import Coffee from './Coffee';
+import Coffee from '../components/Coffee';
+import { coffeesType } from '../types/CoffeeTypes';
 
-const Coffees = () => {
+const Coffeesforeach = () => {
   const [coffeeData, setCoffeeData] = useState([]);
 
   useEffect(() => {
     async function main() {
       const coffees = await getCoffeesData();
-      setCoffeeData(coffees);
       // console.log(coffees);
+      //useforeach/forof/forin logic here
+      let coffeesUpperCased = coffees;
+      coffeesUpperCased = [];
+      coffees.forEach((item: any) => {
+        coffeesUpperCased.push({ ...item, title: item.title.toUpperCase() });
+        // console.log('hey', coffeesUpperCased);
+      });
+      setCoffeeData(coffeesUpperCased);
+      // console.log(coffeesUpperCased);
     }
     main();
   }, []);
@@ -25,4 +34,4 @@ const Coffees = () => {
   );
 };
 
-export default Coffees;
+export default Coffeesforeach;

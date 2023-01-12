@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import { getCoffeesData } from '../requests/coffeeRequests';
-import Coffee from './Coffee';
+import Coffee from '../components/Coffee';
 
-const Coffees = () => {
+const Coffeesforin = () => {
   const [coffeeData, setCoffeeData] = useState([]);
 
   useEffect(() => {
     async function main() {
       const coffees = await getCoffeesData();
-      setCoffeeData(coffees);
-      // console.log(coffees);
+      let coffeesNumbered = coffees;
+      coffeesNumbered = [];
+      for (let index in coffees) {
+        let item: any = coffees[index];
+        coffeesNumbered.push({ ...item, title: `${index}.${item.title}` });
+      }
+      console.log(coffeesNumbered);
+      setCoffeeData(coffeesNumbered);
     }
     main();
   }, []);
@@ -25,4 +31,4 @@ const Coffees = () => {
   );
 };
 
-export default Coffees;
+export default Coffeesforin;
