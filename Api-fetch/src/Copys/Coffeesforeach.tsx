@@ -4,21 +4,19 @@ import Coffee from '../components/Coffee';
 import { coffeesType } from '../types/CoffeeTypes';
 
 const Coffeesforeach = () => {
-  const [coffeeData, setCoffeeData] = useState([]);
+  // NOTE: We could have type as `any` instead of `coffeesType` but with a given type we get autocomplete and type error facility thanks to typescript.
+  const [coffeeData, setCoffeeData] = useState<coffeesType>([]);
 
   useEffect(() => {
     async function main() {
       const coffees = await getCoffeesData();
-      // console.log(coffees);
-      //useforeach/forof/forin logic here
-      let coffeesUpperCased = coffees;
-      coffeesUpperCased = [];
+
+      // NOTE: We could have type as `any` instead of `coffeesType` but with a given type we get autocomplete and type error facility thanks to typescript.
+      let coffeesUpperCased: coffeesType = [];
       coffees.forEach((item: any) => {
         coffeesUpperCased.push({ ...item, title: item.title.toUpperCase() });
-        // console.log('hey', coffeesUpperCased);
       });
       setCoffeeData(coffeesUpperCased);
-      // console.log(coffeesUpperCased);
     }
     main();
   }, []);
